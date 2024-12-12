@@ -1,5 +1,8 @@
+import org.gradle.internal.declarativedsl.parsing.main
+
 plugins {
     id("java")
+    id("application")
 }
 
 group = "com.AdobeAssingment"
@@ -20,4 +23,8 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+application {
+    mainClass.set("com.AdobeAssignment.Main")
 }
