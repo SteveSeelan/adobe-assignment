@@ -1,5 +1,6 @@
 package com.AdobeAssignment.model;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -9,7 +10,7 @@ public class LeadContainer {
     public LeadContainer() {}
 
     public LeadContainer(List<Lead> leads) {
-        this.leads = leads;
+        this.leads = new ArrayList<>(leads);
     }
 
     public List<Lead> getLeads() {
@@ -21,10 +22,10 @@ public class LeadContainer {
     }
 
     public void sortLeadsByEntryDateDescending() {
-        leads.sort(Comparator.comparing(Lead::getEntryDate).reversed());
+        this.leads.sort(Comparator.comparing(Lead::getEntryDate).reversed());
     }
 
     public void sortLeadsByEntryDateAscending() {
-        leads.sort(Comparator.comparing(Lead::getEntryDate));
+        this.leads.sort(Comparator.comparing(Lead::getEntryDate));
     }
 }

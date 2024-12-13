@@ -6,9 +6,14 @@ if [ ! -f "./gradlew" ]; then
   exit 1
 fi
 
-# Build the project
-echo "Building the project using Gradle..."
-./gradlew build
+# Build the project if not built
+BUILD_DIR="build"
+if [ -d "$BUILD_DIR" ]; then
+    echo "Build directory found. Skipping build."
+else
+    echo "Build directory not found. Running Gradle build..."
+    ./gradlew build
+fi
 
 # Check if build was successful
 if [ $? -ne 0 ]; then
@@ -20,7 +25,13 @@ echo "Build successful."
 
 # Run the program with arguments
 echo "Running the program..."
-./gradlew run --args="$@"
+if [ $# -eq 0 ]; then
+    # If no arguments, pass an empty string
+    ./gradlew run --args=" "
+else
+    # Otherwise, pass all arguments
+    ./gradlew run --args="$*"
+fi
 
 # Check if the program ran successfully
 if [ $? -ne 0 ]; then
