@@ -18,6 +18,12 @@ The application should also provide a log of changes including some representati
 
 Please implement as a command line program.
 
+### Notes:
+
+I would add more logging capabilities usually. Debugging levels like
+trace, info, none, etc. I would have these logs outputted into a file. I 
+mostly wanted to demonstrate at a high level how I program.
+
 ## Requirements
 - **Java**: 
   - openjdk 23 2024-09-17
